@@ -1,0 +1,266 @@
+{
+    "telugu": [
+        {
+            "phrase": "గుద్దితే గులాబ్ జామూన్ అయితావ్",
+            "literal": "If I punch you, you'll become a gulab jamun",
+            "actual_meaning": "I'll beat you up so bad you'll be unrecognizable",
+            "tone": "Playful threat, very informal",
+            "used_when": "Friends joking around",
+            "formality": "Super casual - only with close friends, never elders"
+        },
+        {
+            "phrase": "తల తినకు",
+            "literal": "Don't eat my head",
+            "actual_meaning": "Stop bothering me",
+            "tone": "Frustrated, informal",
+            "used_when": "Someone is annoying you",
+            "formality": "Casual - avoid with elders"
+        },
+        {
+            "phrase": "కడుపు నిండా తిన్నావా",
+            "literal": "Did your stomach fill up",
+            "actual_meaning": "Did you eat well?",
+            "tone": "Warm, caring",
+            "used_when": "Checking if someone ate properly",
+            "formality": "Used by elders affectionately"
+        },
+        {
+            "phrase": "నోరు మూసుకో",
+            "literal": "Close your mouth",
+            "actual_meaning": "Shut up / Stop talking",
+            "tone": "Angry, rude",
+            "used_when": "Very angry at someone",
+            "formality": "Very rude - never use with elders or strangers"
+        },
+        {
+            "phrase": "కళ్ళు తెరు",
+            "literal": "Open your eyes",
+            "actual_meaning": "Wake up to reality / Stop being naive",
+            "tone": "Frustrated, concerned",
+            "used_when": "Someone is being foolish or ignoring obvious truth",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "చెవిటి వాడికి చెప్పినట్టు",
+            "literal": "Like telling a deaf person",
+            "actual_meaning": "Talking to someone who never listens",
+            "tone": "Frustrated, giving up",
+            "used_when": "Someone repeatedly ignores your advice",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "అన్నం పెట్టిన చేతికి కత్తి చూపించడం",
+            "literal": "Showing a knife to the hand that fed you",
+            "actual_meaning": "Betraying someone who helped you",
+            "tone": "Disappointed, accusatory",
+            "used_when": "Someone betrays a person who was good to them",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "ఉప్పు తిన్న ఇంట్లో పొయ్యి ఆర్పడం",
+            "literal": "Putting out the fire in the house where you ate salt",
+            "actual_meaning": "Betraying someone who gave you food and shelter",
+            "tone": "Strong accusation",
+            "used_when": "Extreme betrayal of trust",
+            "formality": "Serious, neutral"
+        }
+    ],
+    "tamil": [
+        {
+            "phrase": "தலையை சாப்பிடாதே",
+            "literal": "Don't eat the head",
+            "actual_meaning": "Stop annoying me",
+            "tone": "Frustrated, informal",
+            "used_when": "Someone is irritating you",
+            "formality": "Casual - avoid with elders"
+        },
+        {
+            "phrase": "கை நிறைய காசு",
+            "literal": "Hands full of money",
+            "actual_meaning": "Very wealthy, loaded with money",
+            "tone": "Admiring, sometimes jealous",
+            "used_when": "Talking about someone rich",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "வாய் கிழிய பேசாதே",
+            "literal": "Don't talk till your mouth tears",
+            "actual_meaning": "Stop talking so much / Don't exaggerate",
+            "tone": "Annoyed, dismissive",
+            "used_when": "Someone is talking too much or lying",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "கண்ணை மூடிக்கொண்டு நம்பு",
+            "literal": "Believe with eyes closed",
+            "actual_meaning": "Trust blindly without questioning",
+            "tone": "Cautionary, sometimes sarcastic",
+            "used_when": "Warning someone about blind trust",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "ஆமாம் பல்லி",
+            "literal": "Yes lizard",
+            "actual_meaning": "Someone who agrees to everything without thinking",
+            "tone": "Mocking, sarcastic",
+            "used_when": "Teasing someone who never disagrees",
+            "formality": "Very casual, only with friends"
+        },
+        {
+            "phrase": "வீட்டில் என்ன வளைச்சாலும் வெளியே நேராக நட",
+            "literal": "However you bend at home, walk straight outside",
+            "actual_meaning": "Whatever happens privately, maintain dignity in public",
+            "tone": "Wise, advisory",
+            "used_when": "Advising someone about public behavior",
+            "formality": "Formal, said by elders"
+        },
+        {
+            "phrase": "பணம் பந்தம் இல்லாதது",
+            "literal": "Money has no relations",
+            "actual_meaning": "Money doesn't care about relationships, it causes fights",
+            "tone": "Wise, warning",
+            "used_when": "Warning about money disputes in family or friends",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "சோத்துக்கு பஞ்சமில்லை",
+            "literal": "No shortage of rice",
+            "actual_meaning": "There's plenty of food, no one will go hungry here",
+            "tone": "Welcoming, generous",
+            "used_when": "Welcoming guests warmly",
+            "formality": "Casual, homely"
+        }
+    ],
+    "kannada": [
+        {
+            "phrase": "ತಲೆ ತಿನ್ನಬೇಡ",
+            "literal": "Don't eat the head",
+            "actual_meaning": "Stop bothering me",
+            "tone": "Frustrated, informal",
+            "used_when": "Someone is annoying you",
+            "formality": "Casual - avoid with elders"
+        },
+        {
+            "phrase": "ಹೊಟ್ಟೆ ತುಂಬಾ ತಿಂದೆಯಾ",
+            "literal": "Did your stomach fill completely",
+            "actual_meaning": "Did you eat well?",
+            "tone": "Warm, caring",
+            "used_when": "Checking if someone ate properly",
+            "formality": "Used affectionately by elders"
+        },
+        {
+            "phrase": "ಬಾಯಿ ಮುಚ್ಚು",
+            "literal": "Close your mouth",
+            "actual_meaning": "Shut up",
+            "tone": "Angry, rude",
+            "used_when": "Very angry, wanting someone to stop talking",
+            "formality": "Very rude - never with elders"
+        },
+        {
+            "phrase": "ಕಣ್ಣು ತೆರೆ",
+            "literal": "Open your eyes",
+            "actual_meaning": "Wake up to reality, stop being naive",
+            "tone": "Concerned, frustrated",
+            "used_when": "Someone is ignoring obvious truth",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "ಉಪ್ಪು ತಿಂದ ಮನೆಗೆ ದ್ರೋಹ",
+            "literal": "Betraying the house where you ate salt",
+            "actual_meaning": "Betraying someone who fed and sheltered you",
+            "tone": "Strong accusation, disappointment",
+            "used_when": "Someone betrays a generous person",
+            "formality": "Serious, neutral"
+        },
+        {
+            "phrase": "ಹಾಲು ಕುಡಿದ ಮನೆಗೆ ಬೆಂಕಿ ಹಚ್ಚುವುದು",
+            "literal": "Setting fire to the house where you drank milk",
+            "actual_meaning": "Destroying someone who nurtured you",
+            "tone": "Deeply accusatory",
+            "used_when": "Ultimate betrayal",
+            "formality": "Serious"
+        },
+        {
+            "phrase": "ಮನೆಯಲ್ಲಿ ಹುಲಿ ಹೊರಗೆ ನರಿ",
+            "literal": "Tiger at home, fox outside",
+            "actual_meaning": "Brave at home but cowardly outside",
+            "tone": "Mocking",
+            "used_when": "Teasing someone who is only bold at home",
+            "formality": "Casual, humorous"
+        },
+        {
+            "phrase": "ಅನ್ನ ಹಾಕಿದ ಕೈ ಕಚ್ಚುವುದು",
+            "literal": "Biting the hand that fed you",
+            "actual_meaning": "Hurting someone who helped you",
+            "tone": "Disappointed, accusatory",
+            "used_when": "Betrayal of a helpful person",
+            "formality": "Neutral"
+        }
+    ],
+    "malayalam": [
+        {
+            "phrase": "തല തിന്നരുത്",
+            "literal": "Don't eat the head",
+            "actual_meaning": "Stop bothering me",
+            "tone": "Frustrated, informal",
+            "used_when": "Someone is annoying you",
+            "formality": "Casual - avoid with elders"
+        },
+        {
+            "phrase": "വയറു നിറഞ്ഞോ",
+            "literal": "Did the stomach fill",
+            "actual_meaning": "Did you eat well?",
+            "tone": "Warm, caring",
+            "used_when": "Checking if someone ate",
+            "formality": "Used affectionately"
+        },
+        {
+            "phrase": "വായ് അടയ്ക്കൂ",
+            "literal": "Close your mouth",
+            "actual_meaning": "Shut up / Stop talking",
+            "tone": "Angry, rude",
+            "used_when": "Very angry at someone talking too much",
+            "formality": "Very rude - never with elders"
+        },
+        {
+            "phrase": "കണ്ണ് തുറക്കൂ",
+            "literal": "Open your eyes",
+            "actual_meaning": "Wake up to reality",
+            "tone": "Concerned, urgent",
+            "used_when": "Someone is being naive or ignoring truth",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "ഉപ്പ് തിന്ന വീട്ടിൽ തീ വയ്ക്കുക",
+            "literal": "Setting fire to the house where you ate salt",
+            "actual_meaning": "Betraying someone who was kind to you",
+            "tone": "Strong accusation",
+            "used_when": "Betrayal of trust and kindness",
+            "formality": "Serious"
+        },
+        {
+            "phrase": "പശുവിനെ കറന്ന് കഴിഞ്ഞ് തൊഴിക്കുക",
+            "literal": "Kick the cow after milking it",
+            "actual_meaning": "Use someone and then discard them",
+            "tone": "Accusatory, disappointed",
+            "used_when": "Someone uses a person and then abandons them",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "ആനയ്ക്ക് അഴക് തുമ്പിക്കൈ",
+            "literal": "The elephant's beauty is its trunk",
+            "actual_meaning": "Everyone has their own unique strength or beauty",
+            "tone": "Wise, positive",
+            "used_when": "Encouraging someone about their unique qualities",
+            "formality": "Neutral, can use anywhere"
+        },
+        {
+            "phrase": "കുളത്തിൽ കല്ലെറിഞ്ഞ് കൈ കഴുകുക",
+            "literal": "Throw a stone in the pond and wash your hands",
+            "actual_meaning": "Create trouble and then act innocent",
+            "tone": "Accusatory, sarcastic",
+            "used_when": "Someone causes problems and pretends they didn't",
+            "formality": "Casual"
+        }
+    ]
+}

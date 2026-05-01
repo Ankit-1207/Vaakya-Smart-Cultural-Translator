@@ -1,0 +1,7 @@
+stages:
+  process_dataset:
+    cmd: echo "Processing dataset..."
+    deps:
+      - dataset/idioms.json
+    outs:
+      - dataset/processed_idioms.json
