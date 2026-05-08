@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from typing import List
@@ -16,6 +16,7 @@ router = APIRouter()
 @router.post("/", response_model=TranslationResponse)
 async def translate(
     request: TranslationRequest,
+    background_tasks: BackgroundTasks,
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
@@ -58,13 +59,16 @@ async def translate(
     await db.refresh(history_record)
 
     # 4. Upload to S3 logs
-    s3_service.upload_log({
-        "user_id": current_user.id,
-        "original_text": response_data["original_text"],
-        "translated_text": response_data["translated_text"],
-        "is_idiom": response_data["is_idiom"],
-        "timestamp": history_record.created_at.isoformat() if history_record.created_at else None
-    })
+    background_tasks.add_task(
+        s3_service.upload_log,
+        {
+            "user_id": current_user.id,
+            "original_text": response_data["original_text"],
+            "translated_text": response_data["translated_text"],
+            "is_idiom": response_data["is_idiom"],
+            "timestamp": history_record.created_at.isoformat() if history_record.created_at else None
+        }
+    )
 
     return response_data
 
