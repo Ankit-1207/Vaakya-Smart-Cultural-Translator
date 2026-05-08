@@ -34,9 +34,10 @@ async def translate(
     }
 
     if idiom_match:
-        response_data["translated_text"] = idiom_match["actual_meaning"]
+        actual_meaning = idiom_match["actual_meaning"]
+        response_data["translated_text"] = await translate_with_gemini(actual_meaning, request.target_language)
         response_data["tone"] = idiom_match["tone"]
-        response_data["meaning"] = idiom_match["actual_meaning"]
+        response_data["meaning"] = actual_meaning
         response_data["used_when"] = idiom_match["used_when"]
         response_data["formality"] = idiom_match["formality"]
         response_data["is_idiom"] = True

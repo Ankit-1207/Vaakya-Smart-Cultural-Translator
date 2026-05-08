@@ -262,5 +262,47 @@
             "used_when": "Someone causes problems and pretends they didn't",
             "formality": "Casual"
         }
+    ],
+    "english": [
+        {
+            "phrase": "break a leg",
+            "literal": "Break a leg",
+            "actual_meaning": "Good luck",
+            "tone": "Encouraging, informal",
+            "used_when": "Wishing someone success before a performance, interview, or challenge",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "piece of cake",
+            "literal": "A piece of cake",
+            "actual_meaning": "Something very easy to do",
+            "tone": "Casual, confident",
+            "used_when": "Describing a task that is simple or effortless",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "spill the beans",
+            "literal": "Spill the beans",
+            "actual_meaning": "Reveal a secret",
+            "tone": "Informal, playful",
+            "used_when": "Someone tells information that was meant to stay hidden",
+            "formality": "Casual"
+        },
+        {
+            "phrase": "hit the nail on the head",
+            "literal": "Hit the nail on the head",
+            "actual_meaning": "Describe or identify something exactly right",
+            "tone": "Approving, informal",
+            "used_when": "Someone gives an accurate answer or explanation",
+            "formality": "Neutral"
+        },
+        {
+            "phrase": "cost an arm and a leg",
+            "literal": "Cost an arm and a leg",
+            "actual_meaning": "Be very expensive",
+            "tone": "Informal, exaggerated",
+            "used_when": "Talking about something that costs a lot of money",
+            "formality": "Casual"
+        }
     ]
 }
