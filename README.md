@@ -93,6 +93,21 @@ npm run dev
 | POST | `/api/translate` | Translate text |
 | GET | `/api/translate/history` | Get translation history |
 
+### Supported Translation Languages
+
+The translation API accepts either language codes or language names for `target_language`.
+
+| Code | Language |
+|------|----------|
+| `en` | English |
+| `es` | Spanish |
+| `fr` | French |
+| `hi` | Hindi |
+| `kn` | Kannada |
+| `te` | Telugu |
+| `de` | German |
+| `ja` | Japanese |
+
 ### Health
 
 | Method | Endpoint | Description |
@@ -219,7 +234,7 @@ curl -X POST http://localhost:8000/api/auth/login \
 curl -X POST http://localhost:8000/api/translate \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{"text": "Hello", "source_lang": "en", "target_lang": "hi"}'
+  -d '{"text": "Hello", "target_language": "hi"}'
 ```
 
 ---
