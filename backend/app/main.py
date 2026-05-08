@@ -10,7 +10,10 @@ app = FastAPI(title=settings.PROJECT_NAME)
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this
+   allow_origins=[
+    "http://localhost:3000",
+    "https://vaakya-smart-cultural-translator.vercel.app"
+]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
