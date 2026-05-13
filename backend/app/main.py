@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import settings
 from .db.database import engine, Base
-from .api.endpoints import auth, translation, health
+from .api.endpoints import auth, translation, health, voice_translation, emotion, emotion_mismatch, sarcasm
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
@@ -36,6 +36,30 @@ app.include_router(
     translation.router,
     prefix="/api/translate",
     tags=["translate"]
+)
+
+app.include_router(
+    voice_translation.router,
+    prefix="/api/voice-translate",
+    tags=["voice-translate"]
+)
+
+app.include_router(
+    emotion.router,
+    prefix="/api/detect-tone",
+    tags=["emotion"]
+)
+
+app.include_router(
+    emotion_mismatch.router,
+    prefix="/api/emotion-mismatch",
+    tags=["emotion-mismatch"]
+)
+
+app.include_router(
+    sarcasm.router,
+    prefix="/api/detect-sarcasm",
+    tags=["sarcasm"]
 )
 
 @app.get("/")

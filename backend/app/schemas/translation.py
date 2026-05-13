@@ -26,3 +26,13 @@ class TranslationHistoryResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class VoiceTranslationRequest(BaseModel):
+    text: str = Field(..., min_length=1, max_length=5000, description="Text to translate from voice input")
+    target_language: str = "en"
+
+class VoiceTranslationResponse(BaseModel):
+    translated_text: str
+    tone: Optional[str] = None
+    cultural_meaning: Optional[str] = None
+    usage_context: Optional[str] = None
