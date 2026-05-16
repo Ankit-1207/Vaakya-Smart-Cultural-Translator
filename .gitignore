@@ -1,6 +1,24 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!*.env.example
+
+# Python
 venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node / Next.js
 node_modules/
 .next/
-.env
-__pycache__/
+out/
+
+# Logs and local runtime artifacts
+*.log
+*.db
+
+# Local backup folders
 frontend.git.backup/

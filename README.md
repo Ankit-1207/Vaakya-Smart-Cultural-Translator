@@ -1,223 +1,246 @@
-<div align="center">
-  <h1>🌐 Vaakya MLOps: Smart Cultural Translator</h1>
-  <p>A full-stack MLOps intelligent translation platform capturing idioms, cultural nuances, and context, powered by AI.</p>
+# Vaakya - Smart Cultural Translator
 
-  <!-- Badges -->
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Gemini_API-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white" />
-</div>
+Vaakya is a full-stack AI translation platform built to improve contextual and cultural understanding beyond literal translation systems. It combines a FastAPI backend, a Next.js frontend, Google Gemini AI integration, curated idiom data, slang interpretation, emotional mismatch detection, and voice translation workflows to help users understand not only what a sentence says, but what it means in context.
 
-<br />
+The project is designed as a professional final-year project, GitHub portfolio project, and viva-ready demonstration of applied AI, backend engineering, frontend development, and cloud-aware MLOps practices.
 
-## 📖 Overview
+## Features
 
-**Vaakya** is a complete end-to-end MLOps solution designed to go beyond literal text translation. By integrating a vast dataset of idioms and cultural expressions, it uses Google's **Gemini AI** to perform context-aware, culturally sensitive translations. 
+- Context-aware translation that considers idioms, cultural expressions, and intended meaning.
+- Slang interpretation for informal, Gen-Z, and culturally specific phrases.
+- Emotional mismatch detection between sentence meaning and detected voice tone.
+- Voice translation support for spoken-input translation workflows.
+- Gemini AI integration for intelligent translation, slang explanation, and contextual analysis.
+- FastAPI REST API with authentication, translation history, health checks, and modular endpoints.
+- Next.js frontend for translation, dashboard, authentication, and history screens.
+- SQLAlchemy-based data layer with support for local and containerized database usage.
+- AWS S3-oriented logging support for MLOps and translation event tracking.
+- Docker-based setup for backend, frontend, and database orchestration.
 
-This project incorporates robust backend services using **FastAPI**, an asynchronous database architecture (**SQLite/PostgreSQL** with **SQLAlchemy**), secure JWT-based authentication, background tasks for S3 data logging, and a stunning, glassmorphic UI built with **Next.js** and **Tailwind CSS**.
+## Tech Stack
 
----
+**Frontend**
 
-## ✨ Key Features
+- Next.js
+- React
+- TypeScript
+- Axios
+- CSS Modules / global styling
 
-- **🧠 Context-Aware Translations**: Leverages the Gemini API and a dedicated `idioms.json` dataset to capture cultural nuances.
-- **⚡ High-Performance Backend**: Built on FastAPI with fully asynchronous endpoints to prevent blocking operations and ensure smooth streaming.
-- **🔐 Secure Authentication**: JWT-based login and registration system with secure password hashing.
-- **📝 Translation History**: Persistent user-specific history for previously translated texts.
-- **☁️ MLOps Integration**: Built-in tracking and logging pipelines designed for DVC (Data Version Control) and AWS S3 integration via background tasks.
-- **🎨 Glassmorphic UI**: A premium, responsive interface featuring modern web aesthetics and smooth micro-animations.
+**Backend**
 
----
+- FastAPI
+- Python
+- Uvicorn
+- Pydantic
+- SQLAlchemy
+- JWT authentication
 
-## 🏗️ Architecture
+**AI and ML**
+
+- Google Gemini API
+- Google Generative AI SDK
+- Hugging Face Transformers
+- Torch / Torchaudio
+- Audio emotion classification
+
+**Data and Infrastructure**
+
+- SQLite for local development
+- PostgreSQL for containerized deployment
+- AWS S3 integration for logging
+- Docker and Docker Compose
+- DVC pipeline configuration
+
+## System Architecture Overview
+
+Vaakya follows a FastAPI + Next.js architecture.
 
 ```mermaid
 graph TD
-    User([User]) -->|HTTP / Web| Frontend
-    Frontend[Next.js Frontend] -->|REST API Requests| Backend
-    Backend[FastAPI Backend] -->|Async Queries| DB[(SQLite / PostgreSQL)]
-    Backend -->|Async AI Requests| Gemini[Gemini AI Model]
-    Backend -->|Background Logging| S3[(AWS S3 Bucket)]
-    Backend -->|Loads Nuances| Dataset[idioms.json]
+    User[User] --> Frontend[Next.js Frontend]
+    Frontend --> API[FastAPI Backend]
+    API --> Auth[JWT Authentication]
+    API --> DB[(SQLite / PostgreSQL)]
+    API --> Gemini[Gemini AI API]
+    API --> Dataset[Idioms and Cultural Dataset]
+    API --> Emotion[Audio Emotion Detection]
+    API --> S3[AWS S3 Logging]
 ```
 
-### Component Stack
-- **Frontend Layer**: Next.js 14+, React 19, Tailwind CSS, Axios.
-- **Backend API Layer**: FastAPI, Uvicorn.
-- **Data & Auth Layer**: SQLAlchemy (async driver), Passlib, python-jose (JWT).
-- **ML & Infrastructure**: Gemini SDK, DVC for dataset versioning, Docker for containerization.
+The frontend sends user requests to the FastAPI backend through REST APIs. The backend handles authentication, translation workflows, slang analysis, emotion detection, history storage, Gemini API calls, dataset lookups, and optional AWS S3 logging.
 
----
-
-## 📁 Project Structure
-
-```text
-Vaakya-Smart-Cultural-Translator/
-├── backend/                  # FastAPI Application
-│   ├── app/
-│   │   ├── api/              # API Route Handlers (Auth, Translate, Health)
-│   │   ├── core/             # Configuration and Security (JWT)
-│   │   ├── db/               # Async Database Connection
-│   │   ├── models/           # SQLAlchemy ORM Models
-│   │   ├── schemas/          # Pydantic Validation Schemas
-│   │   └── services/         # Business Logic (Gemini API, Translation, MLOps)
-│   ├── requirements.txt      # Python Dependencies
-│   └── Dockerfile            # Backend Docker Configuration
-├── frontend/                 # Next.js Application
-│   ├── src/
-│   │   ├── app/              # App Router (Login, Register, Translate, History)
-│   │   └── lib/              # Client-side Utilities and API calls
-│   ├── package.json          # Node Dependencies
-│   └── Dockerfile            # Frontend Docker Configuration
-├── dataset/
-│   └── idioms.json           # Curated Cultural Expressions Dataset
-├── docker-compose.yml        # Multi-container Orchestration
-├── dvc.yaml                  # Data Version Control Pipeline Definition
-└── README.md                 # Project Documentation
-```
-
----
-
-## 🚀 Getting Started
+## Installation Steps
 
 ### Prerequisites
-- **Node.js**: v18+
-- **Python**: v3.10+
-- **Docker**: Latest version (for containerized deployment)
-- **API Keys**: Google Gemini API Key. (AWS credentials optional for S3 logging).
 
----
+- Python 3.10 or later
+- Node.js 18 or later
+- npm
+- Docker and Docker Compose, if running the containerized setup
+- Google Gemini API key
+- AWS credentials, only if using S3 logging/deployment features
 
-### Setup Option 1: Docker Compose (Recommended)
+### Clone the Repository
 
-The easiest way to run the full stack is via Docker. 
+```bash
+git clone https://github.com/<your-username>/vaakya-mlops.git
+cd vaakya-mlops
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Ankit-1207/Vaakya-Smart-Cultural-Translator.git
-   cd Vaakya-Smart-Cultural-Translator
-   ```
+## Backend Setup
 
-2. **Configure Environment Variables:**
-   Create a `.env` file in the project root containing your API keys (see *Environment Variables* section).
-
-3. **Spin up the containers:**
-   ```bash
-   docker-compose up --build
-   ```
-
-This will start:
-- Frontend on `http://localhost:3000`
-- Backend API on `http://localhost:8000`
-- PostgreSQL Database on `localhost:5432`
-
----
-
-### Setup Option 2: Manual Local Setup
-
-If you prefer to run services natively (using SQLite):
-
-**1. Setup Backend:**
 ```bash
 cd backend
 python -m venv venv
-
-# Activate Virtual Environment
-venv\Scripts\activate      # Windows
-source venv/bin/activate   # Linux/Mac
-
+venv\Scripts\activate
 pip install -r requirements.txt
-
-# Run the FastAPI Server
 uvicorn app.main:app --reload --port 8000
 ```
 
-**2. Setup Frontend:**
+For Linux or macOS:
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+The backend API will run at:
+
+```text
+http://localhost:8000
+```
+
+FastAPI Swagger documentation is available at:
+
+```text
+http://localhost:8000/docs
+```
+
+## Frontend Setup
+
 ```bash
 cd frontend
 npm install
-
-# Run the Next.js Development Server
 npm run dev
 ```
-Navigate to `http://localhost:3000` to view the application.
 
----
+The frontend will run at:
 
-## 🔧 Environment Variables
+```text
+http://localhost:3000
+```
 
-You need to provide the following variables. Create `.env` files in the respective directories or provide them to Docker:
+## Environment Variables
 
-**Backend (`backend/.env` or root `.env`):**
+Secrets must be stored locally in `.env` files and must not be committed to GitHub. This repository includes `.env.example` files for safe reference.
+
+### Backend Environment
+
+Create `backend/.env`:
+
 ```env
-# Database Settings
-DATABASE_URL=sqlite+aiosqlite:///./vaakya.db  # Use postgresql+asyncpg://... for PostgreSQL
-SECRET_KEY=your_secure_random_secret_key
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+POSTGRES_DB=vaakya
+DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/vaakya
+
+SECRET_KEY=generate_a_secure_random_key_here
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 
-# External APIs and Infrastructure
-GEMINI_API_KEY=your_google_gemini_api_key
+GEMINI_API_KEY=your_gemini_api_key_here
+
 AWS_ACCESS_KEY_ID=your_aws_access_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key
 AWS_REGION=us-east-1
-S3_BUCKET_NAME=your_mlops_bucket_name
+S3_BUCKET_NAME=vaakya-data-bucket
 ```
 
-**Frontend (`frontend/.env.local`):**
+### Frontend Environment
+
+Create `frontend/.env.local` if needed:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
----
+## AWS Deployment Overview
 
-## 📡 Core API Endpoints
+The project includes deployment-oriented configuration while keeping deployment behavior unchanged.
 
-The FastAPI backend provides auto-generated documentation at `http://localhost:8000/docs` (Swagger UI).
+- Dockerfiles are available for backend and frontend services.
+- `docker-compose.yml` supports multi-service orchestration.
+- PostgreSQL can be used as the production/container database.
+- AWS S3 integration is available for logging translation and MLOps-related data.
+- Deployment credentials should be provided through secure environment variables, never committed files.
+- Existing AWS and deployment-related files should remain intact when preparing the repository for submission or portfolio use.
 
-### Authentication
-- `POST /api/auth/register`: Create a new user account.
-- `POST /api/auth/login`: Authenticate and receive a JWT.
-- `GET /api/auth/me`: Retrieve current logged-in user profile.
+## Gemini API Integration
 
-### Translation Services
-- `POST /api/translate`: Submit text for cultural translation (requires JWT).
-- `GET /api/translate/history`: Fetch translation history for the authenticated user.
+Vaakya uses Google Gemini AI through the Google Generative AI SDK. Gemini is used to improve cultural translation quality, interpret informal language, explain slang, and analyze contextual meaning. The backend reads the Gemini API key from environment variables and routes AI-powered requests through service modules instead of exposing the key to the frontend.
 
-### Health
-- `GET /api/health`: Check API availability.
+This integration helps the system move beyond direct word substitution by considering intent, tone, cultural meaning, and phrasing.
 
----
+## Slang Interpretation
 
-## 🤖 MLOps & Advanced Mechanics
+The slang interpretation feature analyzes informal expressions, internet slang, Gen-Z language, and culturally dependent phrases. Instead of only translating words literally, it explains the actual meaning in plain language and can provide context-aware interpretation in the target language.
 
-- **Asynchronous Execution**: Backend AI calls and DB queries utilize `async/await` to handle multiple concurrent translation requests without server buffering.
-- **Background Tasks**: The system offloads heavy data logging operations (like uploading input/output metrics to AWS S3) to `FastAPI BackgroundTasks` to ensure a rapid response to the user.
-- **Data Versioning (DVC)**: Tracks changes to the `idioms.json` dataset to ensure reproducible translations across different model versions.
+This is useful for phrases whose meaning changes based on social context, region, sarcasm, humor, or modern usage.
 
----
+## Emotion Detection
 
-## 🤝 Contributing
+Vaakya includes emotion-aware functionality for detecting tone from voice input and comparing it with the emotional meaning of the spoken text. This enables emotional mismatch detection, such as identifying when a happy tone conflicts with sad or serious sentence meaning.
 
-Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+The feature helps improve communication accuracy by highlighting cases where literal text alone may not represent the speaker's emotional intent.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Voice Translation
 
----
+The voice translation workflow supports translation from spoken or voice-derived input. The backend can process voice translation requests, apply contextual translation logic, and use Gemini-powered translation when appropriate.
 
-## 📄 License
+This makes the system more practical for real-world multilingual conversations where users speak naturally rather than typing formal sentences.
 
-Distributed under the MIT License.
+## Screenshots
 
----
+Add screenshots before final submission or portfolio publication.
 
-## 👨‍💻 Author
+### Dashboard
 
-**Ankit-1207**
-- GitHub: [Ankit-1207](https://github.com/Ankit-1207)
+Placeholder: Add dashboard screenshot here.
+
+### Translation Screen
+
+Placeholder: Add translation screen screenshot here.
+
+### Slang Analysis
+
+Placeholder: Add slang interpretation screenshot here.
+
+### Emotion Detection
+
+Placeholder: Add emotion mismatch detection screenshot here.
+
+### Translation History
+
+Placeholder: Add translation history screenshot here.
+
+## Future Enhancements
+
+- Add more regional slang and idiom datasets.
+- Improve multilingual voice transcription support.
+- Add user-selectable translation styles such as formal, casual, and academic.
+- Add analytics dashboards for translation quality and usage trends.
+- Improve deployment automation with CI/CD pipelines.
+- Add more robust evaluation metrics for cultural translation accuracy.
+- Expand support for additional cloud storage and monitoring tools.
+
+## Contributors
+
+- Ankit-1207
+
+## License
+
+This project is intended for academic, portfolio, and demonstration use. Add a formal license file, such as MIT License, before public distribution if required.
