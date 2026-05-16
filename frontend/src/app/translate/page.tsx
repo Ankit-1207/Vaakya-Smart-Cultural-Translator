@@ -13,7 +13,7 @@ export default function Translate() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isListening, setIsListening] = useState(false);
-  const [enableSarcasm, setEnableSarcasm] = useState(false);
+  const [enableSlang, setEnableSlang] = useState(true);
   const [speechError, setSpeechError] = useState('');
   const recognitionRef = useRef<any>(null);
   const mediaRecorderRef = useRef<any>(null);
@@ -164,15 +164,18 @@ export default function Translate() {
           });
         }
 
-        let sarcasmPromise = null;
-        if (enableSarcasm) {
-            sarcasmPromise = api.post('/api/detect-sarcasm/', { text: spokenText });
+        let slangPromise = null;
+        if (enableSlang) {
+            slangPromise = api.post('/api/slang-analysis/', { 
+                text: spokenText,
+                target_language: targetLanguageRef.current 
+            });
         }
 
-        const [transRes, emotionData, sarcasmRes] = await Promise.all([
+        const [transRes, emotionData, slangRes] = await Promise.all([
           translationPromise, 
           emotionChainPromise ? emotionChainPromise : Promise.resolve(null),
-          sarcasmPromise ? sarcasmPromise : Promise.resolve(null)
+          slangPromise ? slangPromise : Promise.resolve(null)
         ]);
         
         setResult({
@@ -187,11 +190,11 @@ export default function Translate() {
           emotional_match_status: emotionData?.mismatch_detected ? 'mismatch' : 'match',
           warning_message: emotionData?.warning_message,
           suggested_tone: emotionData?.suggested_tone,
-          sarcasm_detected: sarcasmRes?.data?.sarcasm_detected,
-          literal_meaning: sarcasmRes?.data?.literal_meaning,
-          intended_meaning: sarcasmRes?.data?.intended_meaning,
-          sarcasm_tone: sarcasmRes?.data?.emotional_tone,
-          sarcasm_confidence: sarcasmRes?.data?.confidence_score
+          slang_detected: slangRes?.data?.slang_detected,
+          actual_meaning: slangRes?.data?.actual_meaning,
+          slang_literal_meaning: slangRes?.data?.literal_meaning,
+          slang_tone: slangRes?.data?.tone,
+          slang_confidence: slangRes?.data?.confidence_score
         });
         setError('');
         break;
@@ -220,23 +223,26 @@ export default function Translate() {
         target_language: targetLanguage
       });
       
-      let sarcasmPromise = null;
-      if (enableSarcasm) {
-          sarcasmPromise = api.post('/api/detect-sarcasm/', { text });
+      let slangPromise = null;
+      if (enableSlang) {
+          slangPromise = api.post('/api/slang-analysis/', { 
+              text,
+              target_language: targetLanguage 
+          });
       }
 
-      const [transRes, sarcasmRes] = await Promise.all([
+      const [transRes, slangRes] = await Promise.all([
         translationPromise,
-        sarcasmPromise ? sarcasmPromise : Promise.resolve(null)
+        slangPromise ? slangPromise : Promise.resolve(null)
       ]);
 
       setResult({
         ...transRes.data,
-        sarcasm_detected: sarcasmRes?.data?.sarcasm_detected,
-        literal_meaning: sarcasmRes?.data?.literal_meaning,
-        intended_meaning: sarcasmRes?.data?.intended_meaning,
-        sarcasm_tone: sarcasmRes?.data?.emotional_tone,
-        sarcasm_confidence: sarcasmRes?.data?.confidence_score
+        slang_detected: slangRes?.data?.slang_detected,
+        actual_meaning: slangRes?.data?.actual_meaning,
+        slang_literal_meaning: slangRes?.data?.literal_meaning,
+        slang_tone: slangRes?.data?.tone,
+        slang_confidence: slangRes?.data?.confidence_score
       });
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Translation failed.');
@@ -330,13 +336,13 @@ export default function Translate() {
             <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem', marginBottom: '1.5rem' }}>
               <input 
                 type="checkbox" 
-                id="sarcasmToggle" 
-                checked={enableSarcasm}
-                onChange={(e) => setEnableSarcasm(e.target.checked)}
+                id="slangToggle" 
+                checked={enableSlang}
+                onChange={(e) => setEnableSlang(e.target.checked)}
                 style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
               />
-              <label htmlFor="sarcasmToggle" className="form-label" style={{ marginBottom: 0, cursor: 'pointer' }}>
-                Enable Sarcasm Detection
+              <label htmlFor="slangToggle" className="form-label" style={{ marginBottom: 0, cursor: 'pointer' }}>
+                Enable Slang Interpretation
               </label>
             </div>
             
@@ -422,15 +428,21 @@ export default function Translate() {
                 </div>
               )}
               
-              {result.sarcasm_detected !== undefined && (
-                <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', borderLeft: result.sarcasm_detected ? '4px solid var(--danger)' : '4px solid var(--success)' }}>
-                  <h4 style={{ marginBottom: '0.5rem', color: 'var(--primary)', fontSize: '1rem' }}>Sarcasm Analysis</h4>
-                  <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Sarcasm Detected:</strong> {result.sarcasm_detected ? 'Yes' : 'No'} {result.sarcasm_confidence ? `(${Math.round(result.sarcasm_confidence * 100)}%)` : ''}</p>
-                  {result.sarcasm_detected && (
+              {result.slang_detected !== undefined && (
+                <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', borderLeft: result.slang_detected ? '4px solid var(--primary)' : '4px solid var(--success)' }}>
+                  <h4 style={{ marginBottom: '0.5rem', color: 'var(--primary)', fontSize: '1rem' }}>Slang Analysis</h4>
+                  <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Slang Detected:</strong> {result.slang_detected ? 'Yes' : 'No'} {result.slang_confidence ? `(${Math.round(result.slang_confidence * 100)}%)` : ''}</p>
+                  {(!result.slang_detected && result.actual_meaning && result.actual_meaning.includes('unavailable')) ? (
+                    <p className="text-sm" style={{ color: 'var(--warning)', marginTop: '0.5rem' }}>
+                      <strong>Note:</strong> {result.actual_meaning}
+                    </p>
+                  ) : result.slang_detected && (
                     <>
-                      <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Literal Meaning:</strong> {result.literal_meaning}</p>
-                      <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Intended Meaning:</strong> {result.intended_meaning}</p>
-                      <p className="text-sm" style={{ marginBottom: '0', textTransform: 'capitalize' }}><strong>Emotional Tone:</strong> {result.sarcasm_tone}</p>
+                      <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Actual Meaning:</strong> {result.actual_meaning}</p>
+                      {result.slang_literal_meaning && (
+                        <p className="text-sm" style={{ marginBottom: '0.25rem' }}><strong>Literal Meaning:</strong> {result.slang_literal_meaning}</p>
+                      )}
+                      <p className="text-sm" style={{ marginBottom: '0', textTransform: 'capitalize' }}><strong>Tone:</strong> {result.slang_tone}</p>
                     </>
                   )}
                 </div>

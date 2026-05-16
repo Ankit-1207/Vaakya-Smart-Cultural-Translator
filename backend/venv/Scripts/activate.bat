@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\OneDrive\Desktop\vaakya-mlops\backend\venv
+set VIRTUAL_ENV=D:\OneDrive\Desktop\Projects\vaakya-mlops\backend\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

@@ -86,3 +86,35 @@ async def analyze_emotion_mismatch(transcribed_text: str, detected_emotion: str)
             "warning_message": None,
             "suggested_tone": None
         }
+async def analyze_context_and_match(text: str, emotion: str):
+    """
+    Analyze contextual meaning and compare with detected emotion.
+    """
+
+    sad_keywords = ["died", "death", "funeral", "cry", "sad"]
+    happy_keywords = ["happy", "celebrate", "success", "party"]
+
+    context = "neutral"
+
+    text_lower = text.lower()
+
+    if any(word in text_lower for word in sad_keywords):
+        context = "sad"
+    elif any(word in text_lower for word in happy_keywords):
+        context = "happy"
+
+    mismatch = False
+
+    if context == "sad" and emotion == "happy":
+        mismatch = True
+
+    return {
+        "sentence_context": context,
+        "voice_emotion": emotion,
+        "mismatch_detected": mismatch,
+        "warning_message": (
+            "Detected tone does not match emotional meaning of sentence."
+            if mismatch
+            else "Emotion matches sentence context."
+        ),
+    }

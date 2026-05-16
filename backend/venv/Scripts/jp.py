@@ -1,4 +1,4 @@
-#!D:\OneDrive\Desktop\vaakya-mlops\backend\venv\Scripts\python.exe
+#!D:\OneDrive\Desktop\Projects\vaakya-mlops\backend\venv\Scripts\python.exe
 
 import sys
 import json
